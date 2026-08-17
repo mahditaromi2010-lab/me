@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahdi Taromi | IT & Network Security</title>
+    <meta name="description" content="Personal website of Mahdi Taromi, IT & Network Security professional. Available in English and Persian.">
+    <!-- فونت‌ها -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Vazir:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --green: #2ecc71;
+            --red: #e74c3c;
+            --dark-bg: #0a0a0a;
+            --light-bg: #1a1a1a;
+            --text: #ffffff;
+            --muted: #aaaaaa;
+            --font-en: 'Poppins', sans-serif;
+            --font-fa: 'Vazir', sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: var(--font-en);
+            background-color: var(--dark-bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            background-image: url('kali-dragon.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.75);
+            z-index: -1;
+        }
+        a {
+            color: var(--green);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #27ae60;
+        }
+        /* تنظیمات زبان */
+        .lang-fa {
+            display: none;
+        }
+        body[data-lang="fa"] .lang-en {
+            display: none;
+        }
+        body[data-lang="fa"] .lang-fa {
+            display: inline;
+        }
+        body[data-lang="fa"] {
+            font-family: var(--font-fa);
+            direction: rtl;
+            text-align: right;
+        }
+        .name-container {
+            direction: ltr; /* نام همیشه چپ به راست */
+        }
+        /* ناوبری */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10,10,10,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--green);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        nav ul li a {
+            color: var(--text);
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: var(--green);
+        }
+        .lang-toggle {
+            background: var(--light-bg);
+            border: 1px solid var(--green);
+            color: var(--green);
+            padding: 5px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .lang-toggle:hover {
+            background: var(--green);
+            color: #000;
+        }
+        /* بخش قهرمان */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .name-container {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            letter-spacing: 2px;
+            min-height: 1.2em;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .typed-letter {
+            color: var(--green);
+        }
+        .red-letter {
+            color: var(--red);
+            cursor: pointer;
+        }
+        .red-letter a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .red-letter a:hover {
+            text-decoration: underline;
+        }
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        .slogan {
+            font-size: 1.4rem;
+            color: #f1c40f;
+            margin-top: 15px;
+            font-weight: 500;
+            text-shadow: 0 0 10px rgba(241, 196, 15, 0.5);
+            opacity: 0;
+            animation: fadeInUp 1.5s forwards 2s, glowPulse 3s infinite 3.5s;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { text-shadow: 0 0 10px rgba(241, 196, 15, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(241, 196, 15, 0.9); }
+        }
+        /* بخش‌ها */
+        section {
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--green);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: rgba(26,26,26,0.9);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+        .card h3 {
+            color: var(--green);
+            margin-bottom: 15px;
+        }
+        .card p, .card li {
+            color: var(--muted);
+        }
+        /* بخش پروژه‌ها */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .project-card {
+            background: rgba(26,26,26,0.9);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+        }
+        .project-icon {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 20px;
+        }
+        .project-icon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 10px rgba(46,204,113,0.5));
+            transition: filter 0.3s;
+        }
+        .project-card:hover .project-icon svg {
+            filter: drop-shadow(0 0 20px rgba(46,204,113,0.9));
+        }
+        .project-title {
+            color: var(--green);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        .project-desc {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+        }
+        .contact-item i {
+            color: var(--green);
+            width: 20px;
+        }
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            font-size: 1.8rem;
+            color: var(--muted);
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social-links a:hover {
+            color: var(--green);
+            transform: scale(1.1);
+        }
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.8);
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        #current-date {
+            color: var(--green);
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .slogan {
+                font-size: 1.1rem;
+            }
+        }
+
+    </style>
+</head>
+<body data-lang="en">
+
+    <nav>
+        <div class="logo">MT</div>
+        <ul>
+            <li><a href="#about" class="lang-en">About</a><a href="#about" class="lang-fa">درباره من</a></li>
+            <li><a href="#projects" class="lang-en">Projects</a><a href="#projects" class="lang-fa">پروژه‌ها</a></li>
+            <li><a href="#skills" class="lang-en">Skills</a><a href="#skills" class="lang-fa">مهارت‌ها</a></li>
+            <li><a href="#contact" class="lang-en">Contact</a><a href="#contact" class="lang-fa">تماس</a></li>
+            <li><button id="langToggle" class="lang-toggle">فارسی</button></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="name-container" id="typed-name"></div>
+        <div class="subtitle" id="subtitle">IT & Network Security</div>
+        <div class="slogan lang-en" id="slogan-en">Nothing is impossible and nothing is absolutely possible.</div>
+        <div class="slogan lang-fa" id="slogan-fa">هیچ چیز غیر ممکن و هیچ چیز مطلقاً ممکن نیست.</div>
+    </section>
+
+    <section id="about">
+        <h2 class="section-title lang-en">About Me</h2>
+        <h2 class="section-title lang-fa">درباره من</h2>
+        <div class="content">
+            <div class="card">
+                <h3 class="lang-en">Who I Am</h3>
+                <h3 class="lang-fa">من کی هستم</h3>
+                <p class="lang-en">I am Mahdi Taromi, born in 2010 (Iranian calendar 1389). This month, I started my professional journey in IT and network security. I am passionate about technology, cybersecurity, and building secure digital solutions.</p>
+                <p class="lang-fa">من مهدی طارمی هستم، متولد ۱۳۸۹ خورشیدی. از این ماه فعالیت حرفه‌ای خودم را در زمینه IT و امنیت شبکه شروع کردم. به فناوری، امنیت سایبری و ساختن راه‌حل‌های دیجیتال امن علاقه‌مندم.</p>
+            </div>
+            <div class="card">
+                <h3 class="lang-en">What I Do</h3>
+                <h3 class="lang-fa">چه کاری انجام می‌دهم</h3>
+                <p class="lang-en">I provide services in IT consulting, network security assessment, and web security. My goal is to help individuals and businesses protect their digital assets.</p>
+                <p class="lang-fa">من در زمینه مشاوره IT، ارزیابی امنیت شبکه و امنیت وب خدمات ارائه می‌دهم. هدف من کمک به افراد و کسب‌وکارها برای محافظت از دارایی‌های دیجیتالشان است.</p>
+            </div>
+            <div class="card">
+                <h3 class="lang-en">My Vision</h3>
+                <h3 class="lang-fa">دیدگاه من</h3>
+                <p class="lang-en">To become a trusted expert in cybersecurity, continuously learning and applying best practices to make the internet a safer place.</p>
+                <p class="lang-fa">می‌خواهم به یک متخصص قابل اعتماد در امنیت سایبری تبدیل شوم، با یادگیری مداوم و به کار بردن بهترین روش‌ها برای امن‌تر کردن اینترنت.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش جدید پروژه‌ها -->
+    <section id="projects">
+        <h2 class="section-title lang-en">Projects</h2>
+        <h2 class="section-title lang-fa">پروژه‌ها</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <a href="https://sentinelweb.ai" target="_blank" class="project-icon" aria-label="SentinelWeb">
+                    <!-- آیکون SVG سپر -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                        <path d="M50 5 L90 20 L90 60 Q90 80 50 95 Q10 80 10 60 L10 20 Z"
+                              fill="black" stroke="#00FF00" stroke-width="6" stroke-linejoin="round"/>
+                        <text x="50" y="58" font-family="Arial, sans-serif" font-size="90" font-weight="bold"
+                              fill="red" text-anchor="middle" dominant-baseline="middle">S</text>
+                    </svg>
+                </a>
+                <!-- <div class="project-title lang-en">SentinelWeb</div>
+                <div class="project-title lang-fa">سنتینل‌وب</div>
+                <p class="project-desc lang-en">Web security scanner with AI analysis.</p>
+                <p class="project-desc lang-fa">اسکنر امنیت وب با تحلیل هوش مصنوعی.</p>
+                <a href="https://sentinelweb.ai" target="_blank" class="lang-en" style="color:var(--green);">Visit Website</a>
+                <a href="https://sentinelweb.ai" target="_blank" class="lang-fa" style="color:var(--green);">مشاهده سایت</a> -->
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title lang-en">Skills & Expertise</h2>
+        <h2 class="section-title lang-fa">مهارت‌ها و تخصص‌ها</h2>
+        <div class="content">
+            <div class="card">
+                <h3 class="lang-en">Network Security</h3>
+                <h3 class="lang-fa">امنیت شبکه</h3>
+                <ul>
+                    <li class="lang-en">Port scanning & vulnerability assessment</li>
+                    <li class="lang-fa">اسکن پورت و ارزیابی آسیب‌پذیری</li>
+                    <li class="lang-en">Firewall configuration</li>
+                    <li class="lang-fa">پیکربندی فایروال</li>
+                    <li class="lang-en">Security analysis with Nmap</li>
+                    <li class="lang-fa">تحلیل امنیتی با Nmap</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="lang-en">Web Development</h3>
+                <h3 class="lang-fa">توسعه وب</h3>
+                <ul>
+                    <li class="lang-en">HTML, CSS, JavaScript</li>
+                    <li class="lang-fa">HTML، CSS، JavaScript</li>
+                    <li class="lang-en">Python (Flask)</li>
+                    <li class="lang-fa">پایتون (Flask)</li>
+                    <li class="lang-en">Responsive design</li>
+                    <li class="lang-fa">طراحی واکنش‌گرا</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="lang-en">Tools & Technologies</h3>
+                <h3 class="lang-fa">ابزارها و فناوری‌ها</h3>
+                <ul>
+                    <li class="lang-en">Linux (Ubuntu, WSL)</li>
+                    <li class="lang-fa">لینوکس (Ubuntu، WSL)</li>
+                    <li class="lang-en">Docker</li>
+                    <li class="lang-fa">Docker</li>
+                    <li class="lang-en">Ollama (AI models)</li>
+                    <li class="lang-fa">Ollama (مدل‌های هوش مصنوعی)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title lang-en">Contact Me</h2>
+        <h2 class="section-title lang-fa">تماس با من</h2>
+        <div class="content">
+            <div class="card">
+                <h3 class="lang-en">Get in Touch</h3>
+                <h3 class="lang-fa">راه‌های ارتباطی</h3>
+                <div class="contact-info">
+                    <div class="contact-item"><i class="fas fa-phone"></i> +98 938 684 0438</div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i> mahditaromi2010@gmail.com</div>
+                    <div class="contact-item"><i class="fab fa-telegram"></i> @mahdi_taromi1389</div>
+                    <div class="contact-item"><i class="fab fa-github"></i> github.com/mahditaromi2010-lab</div>
+                    <div class="contact-item"><i class="fab fa-instagram"></i> @mahdi_taromi1389</div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/mahditaromi2010-lab" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://t.me/mahdi_taromi1389" target="_blank"><i class="fab fa-telegram"></i></a>
+                    <a href="https://www.instagram.com/mahdi_taromi1389" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <span class="lang-en">&copy; 8/17/2026 Mahdi Taromi. All rights reserved.</span>
+        <span class="lang-fa">&copy; ۱۴۰۵/۰۵/۲۶ مهدی طارمی. تمامی حقوق محفوظ است.</span>
+        | <span id="current-date"></span>
+    </footer>
+
+    <script>
+        // ترجمه زیرنویس
+        const translations = {
+            en: {
+                subtitle: 'IT & Network Security',
+                slogan: 'Nothing is impossible and nothing is absolutely possible.'
+            },
+            fa: {
+                subtitle: 'IT و امنیت شبکه',
+                slogan: 'هیچ چیز غیر ممکن و هیچ چیز مطلقاً ممکن نیست.'
+            }
+        };
+
+        const langToggle = document.getElementById('langToggle');
+        const body = document.body;
+        const subtitle = document.getElementById('subtitle');
+        const sloganEn = document.getElementById('slogan-en');
+        const sloganFa = document.getElementById('slogan-fa');
+
+        function updateLanguageContent(lang) {
+            subtitle.textContent = translations[lang].subtitle;
+            // شعار مناسب با CSS نمایش داده می‌شود
+        }
+
+        function toggleLanguage() {
+            const currentLang = body.getAttribute('data-lang');
+            const newLang = currentLang === 'en' ? 'fa' : 'en';
+            body.setAttribute('data-lang', newLang);
+            langToggle.textContent = newLang === 'en' ? 'فارسی' : 'English';
+            updateLanguageContent(newLang);
+            resetTyping();
+        }
+
+        langToggle.addEventListener('click', toggleLanguage);
+        updateLanguageContent('en'); // مقدار اولیه
+
+        // تایپ نام با حلقه بی‌نهایت
+        const name = "Mahdi Taromi";
+        const container = document.getElementById('typed-name');
+        const specialIndex = 1; // حرف 'a' در Mahdi
+        let typeTimeout;
+        let pauseTimeout;
+
+        function typeName() {
+            container.innerHTML = '';
+            let i = 0;
+            function typeNext() {
+                if (i < name.length) {
+                    const char = name[i];
+                    if (i === specialIndex) {
+                        const anchor = document.createElement('a');
+                        anchor.href = 'https://github.com/mahditaromi2010-lab/a';
+                        anchor.target = '_blank';
+                        anchor.className = 'red-letter';
+                        anchor.textContent = char;
+                        container.appendChild(anchor);
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'typed-letter';
+                        span.textContent = char;
+                        container.appendChild(span);
+                    }
+                    i++;
+                    typeTimeout = setTimeout(typeNext, 150);
+                } else {
+                    pauseTimeout = setTimeout(() => {
+                        typeName();
+                    }, 3000);
+                }
+            }
+            typeNext();
+        }
+
+        function resetTyping() {
+            clearTimeout(typeTimeout);
+            clearTimeout(pauseTimeout);
+            typeName();
+        }
+
+        // نمایش تاریخ امروز به فرمت MM/DD/YYYY
+        function displayTodayDate() {
+            const today = new Date();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const year = today.getFullYear();
+            document.getElementById('current-date').textContent = month + '/' + day + '/' + year;
+        }
+
+        // شروع اولیه
+        typeName();
+        displayTodayDate();
+        setInterval(displayTodayDate, 60000);
+    </script>
+</body>
+</html>
